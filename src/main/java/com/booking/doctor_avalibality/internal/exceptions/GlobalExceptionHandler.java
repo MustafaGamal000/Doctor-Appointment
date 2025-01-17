@@ -1,4 +1,4 @@
-package com.booking.doctor_avalibality.exceptions;
+package com.booking.doctor_avalibality.internal.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

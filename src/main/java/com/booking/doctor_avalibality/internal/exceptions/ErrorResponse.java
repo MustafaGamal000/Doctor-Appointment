@@ -1,4 +1,4 @@
-package com.booking.doctor_avalibality.exceptions;
+package com.booking.doctor_avalibality.internal.exceptions;
 
 import java.time.LocalDateTime;
 
