@@ -1,4 +1,4 @@
-package com.booking.doctor_avalibality.internal.mapper;
+package com.booking.doctor_avalibality.shared.mapper;
 
 import com.booking.doctor_avalibality.shared.dtos.DoctorDTO;
 import com.booking.doctor_avalibality.internal.entities.DoctorEntity;

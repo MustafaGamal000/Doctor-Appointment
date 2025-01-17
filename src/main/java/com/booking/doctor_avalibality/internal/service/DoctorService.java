@@ -2,7 +2,7 @@ package com.booking.doctor_avalibality.internal.service;
 
 import com.booking.doctor_avalibality.shared.dtos.DoctorDTO;
 import com.booking.doctor_avalibality.internal.entities.DoctorEntity;
-import com.booking.doctor_avalibality.internal.mapper.DoctorMapper;
+import com.booking.doctor_avalibality.shared.mapper.DoctorMapper;
 import com.booking.doctor_avalibality.internal.exceptions.DoctorNotFoundException;
 import com.booking.doctor_avalibality.internal.repository.DoctorRepository;
 import org.springframework.stereotype.Service;

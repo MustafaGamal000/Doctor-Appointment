@@ -2,7 +2,7 @@ package com.booking.doctor_avalibality.shared.contract;
 
 import com.booking.doctor_avalibality.shared.dtos.ReserveSlotDTO;
 import com.booking.doctor_avalibality.internal.entities.SlotEntity;
-import com.booking.doctor_avalibality.internal.mapper.SlotMapper;
+import com.booking.doctor_avalibality.shared.mapper.SlotMapper;
 import com.booking.doctor_avalibality.internal.repository.SlotRepository;
 import com.booking.doctor_avalibality.shared.dtos.SlotDTO;
 import org.springframework.stereotype.Service;
