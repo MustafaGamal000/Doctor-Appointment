@@ -1,23 +1,25 @@
 package com.booking.doctor_avalibality.shared.dtos;
 
+import com.booking.doctor_avalibality.internal.entities.DoctorEntity;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class DoctorSlotDTO {
-    private UUID id;
+public class SlotDTO {
+    private UUID slotId;
     private LocalDateTime time;
     private UUID doctorId;
-    private String doctorName;
     private boolean isReserved;
-    private double cost;
+    private LocalDateTime reservedAt;
+    private BigDecimal cost;
 
-    // Getters and Setters
-    public UUID getId() {
-        return id;
+    public UUID getSlotId() {
+        return slotId;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setSlotId(UUID slotId) {
+        this.slotId = slotId;
     }
 
     public LocalDateTime getTime() {
@@ -36,14 +38,6 @@ public class DoctorSlotDTO {
         this.doctorId = doctorId;
     }
 
-    public String getDoctorName() {
-        return doctorName;
-    }
-
-    public void setDoctorName(String doctorName) {
-        this.doctorName = doctorName;
-    }
-
     public boolean isReserved() {
         return isReserved;
     }
@@ -52,11 +46,19 @@ public class DoctorSlotDTO {
         isReserved = reserved;
     }
 
-    public double getCost() {
+    public LocalDateTime getReservedAt() {
+        return reservedAt;
+    }
+
+    public void setReservedAt(LocalDateTime reservedAt) {
+        this.reservedAt = reservedAt;
+    }
+
+    public BigDecimal getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public void setCost(BigDecimal cost) {
         this.cost = cost;
     }
 }
