@@ -1,10 +1,13 @@
 package com.booking.Appointment_booking.internal.application.usecases;
 
+import com.booking.Appointment_booking.internal.application.IAppointmentEventPublisher;
 import com.booking.Appointment_booking.internal.application.query.BookAppointmentRequest;
 import com.booking.Appointment_booking.internal.application.query.BookAppointmentResponse;
 import com.booking.Appointment_booking.internal.domain.contract.AppointmentRepository;
 import com.booking.Appointment_booking.internal.domain.contract.PatientRepository;
 import com.booking.Appointment_booking.internal.domain.models.Appointment;
+import com.booking.Appointment_booking.internal.domain.models.AppointmentCreated;
+import com.booking.Appointment_booking.internal.domain.models.AppointmentEvent;
 import com.booking.Appointment_booking.internal.domain.models.Patient;
 import com.booking.Appointment_booking.shared.AppointmentStatus;
 import com.booking.doctor_avalibality.shared.contract.IDoctorAvailability;
@@ -19,11 +22,14 @@ public class ReserveSlotUseCase {
     private final AppointmentRepository appointmentRepository;
     private final PatientRepository patientRepository;
 
+    private final IAppointmentEventPublisher appointmentEventPublisher;
 
-    public ReserveSlotUseCase(IDoctorAvailability doctorAvailability, AppointmentRepository appointmentRepository, PatientRepository patientRepository) {
+    public ReserveSlotUseCase(IDoctorAvailability doctorAvailability, AppointmentRepository appointmentRepository, PatientRepository patientRepository, IAppointmentEventPublisher appointmentEventPublisher) {
         this.doctorAvailability = doctorAvailability;
         this.appointmentRepository = appointmentRepository;
         this.patientRepository = patientRepository;
+        this.appointmentEventPublisher = appointmentEventPublisher;
+
     }
 
     public BookAppointmentResponse reserveSlot(BookAppointmentRequest request) {
@@ -47,6 +53,10 @@ public class ReserveSlotUseCase {
         appointment.setSlotId(slotId);
 
         appointmentRepository.save(appointment);
+
+        AppointmentEvent appointmentCreatedEvent = new AppointmentCreated();
+
+        appointmentEventPublisher.publishCustomEvent(appointmentCreatedEvent);
 
         // Return the response
         return new BookAppointmentResponse(
