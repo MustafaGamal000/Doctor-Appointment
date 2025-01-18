@@ -41,6 +41,7 @@ public class SlotService {
         slotDTO.setTime(request.getTime());
         slotDTO.setCost(request.getCost());
         slotDTO.setDoctorId(doctor.getDoctorId());
+        slotDTO.setReserved(false);
 
         slotRepository.save(SlotMapper.toEntity(slotDTO));
         return SlotResponse.createSlotResponse("New slot added to doctor name: " + request.getDoctorName(),
