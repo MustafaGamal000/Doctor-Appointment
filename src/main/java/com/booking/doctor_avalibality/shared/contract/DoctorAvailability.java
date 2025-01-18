@@ -2,7 +2,6 @@ package com.booking.doctor_avalibality.shared.contract;
 
 import com.booking.doctor_avalibality.internal.repository.DoctorRepository;
 import com.booking.doctor_avalibality.shared.dtos.DoctorDTO;
-import com.booking.doctor_avalibality.shared.dtos.ReserveSlotDTO;
 import com.booking.doctor_avalibality.internal.entities.SlotEntity;
 import com.booking.doctor_avalibality.shared.mapper.DoctorMapper;
 import com.booking.doctor_avalibality.shared.mapper.SlotMapper;
@@ -26,7 +25,8 @@ public class DoctorAvailability implements IDoctorAvailability {
     }
 
     @Override
-    public List<SlotDTO> getFreeSlots(boolean state) {
+    public List<SlotDTO> getFreeSlots() {
+        boolean state = false;
         return slotRepository.findByIsReserved(state)
                 .stream()
                 .map(SlotMapper::toDTO)
@@ -50,20 +50,19 @@ public class DoctorAvailability implements IDoctorAvailability {
                 .orElseThrow(() -> new IllegalArgumentException("Doctor with name " + doctorName + " not found."));
     }
 
-//    @Override
-//    public void reserveSlot(ReserveSlotDTO request) {
-//        UUID slotId = request.getSlotId();
-//
-//        SlotEntity slot = slotRepository.findById(slotId)
-//                .orElseThrow(() -> new IllegalArgumentException("Slot with ID " + slotId + " not found."));
-//
-//        if (slot.isReserved()) {
-//            throw new IllegalArgumentException("Slot is already reserved.");
-//        }
-//
-//        slot.setReserved(true);
-//        slot.setReservedAt(LocalDateTime.now());
-//
-//        slotRepository.save(slot);
-//    }
+    @Override
+    public void reserveSlot(UUID slotId) {
+
+        SlotEntity slot = slotRepository.findById(slotId)
+                .orElseThrow(() -> new IllegalArgumentException("Slot with ID " + slotId + " not found."));
+
+        if (slot.isReserved()) {
+            throw new IllegalArgumentException("Slot is already reserved.");
+        }
+
+        slot.setReserved(true);
+        slot.setReservedAt(LocalDateTime.now());
+
+        slotRepository.save(slot);
+    }
 }

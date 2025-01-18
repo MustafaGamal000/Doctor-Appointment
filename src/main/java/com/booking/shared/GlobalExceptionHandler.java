@@ -1,5 +1,7 @@
-package com.booking.doctor_avalibality.internal.exceptions;
+package com.booking.shared;
 
+import com.booking.doctor_avalibality.internal.exceptions.DoctorNotFoundException;
+import com.booking.doctor_avalibality.internal.exceptions.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

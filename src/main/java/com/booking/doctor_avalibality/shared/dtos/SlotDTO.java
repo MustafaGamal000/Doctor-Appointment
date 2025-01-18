@@ -1,6 +1,7 @@
 package com.booking.doctor_avalibality.shared.dtos;
 
 import com.booking.doctor_avalibality.internal.entities.DoctorEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -10,8 +11,8 @@ public class SlotDTO {
     private UUID slotId;
     private LocalDateTime time;
     private UUID doctorId;
+    @JsonIgnore
     private boolean isReserved;
-    private LocalDateTime reservedAt;
     private BigDecimal cost;
 
     public UUID getSlotId() {
@@ -38,20 +39,14 @@ public class SlotDTO {
         this.doctorId = doctorId;
     }
 
+    @JsonIgnore
     public boolean isReserved() {
         return isReserved;
     }
 
+    @JsonIgnore
     public void setReserved(boolean reserved) {
         isReserved = reserved;
-    }
-
-    public LocalDateTime getReservedAt() {
-        return reservedAt;
-    }
-
-    public void setReservedAt(LocalDateTime reservedAt) {
-        this.reservedAt = reservedAt;
     }
 
     public BigDecimal getCost() {

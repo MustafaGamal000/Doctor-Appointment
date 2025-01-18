@@ -1,6 +1,5 @@
 package com.booking.doctor_avalibality.internal.controller.slot;
 
-import com.booking.doctor_avalibality.shared.dtos.ReserveSlotDTO;
 import com.booking.doctor_avalibality.internal.controller.slot.request.SlotRequest;
 import com.booking.doctor_avalibality.internal.controller.slot.response.SlotResponse;
 import com.booking.doctor_avalibality.internal.service.SlotService;
@@ -32,9 +31,9 @@ public class SlotController {
     }
 
     // Testing Only
-    @PostMapping("/reserve")
-    public ResponseEntity<String> reserveSlot(@RequestBody ReserveSlotDTO request) {
-        slotService.reserveSlot(request);
-        return ResponseEntity.ok("Slot reserved successfully.");
-    }
+//    @PostMapping("/reserve")
+//    public ResponseEntity<String> reserveSlot(@RequestBody ReserveSlotDTO request) {
+//        slotService.reserveSlot(request);
+//        return ResponseEntity.ok("Slot reserved successfully.");
+//    }
 }

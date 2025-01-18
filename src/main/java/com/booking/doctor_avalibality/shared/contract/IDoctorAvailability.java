@@ -1,13 +1,13 @@
 package com.booking.doctor_avalibality.shared.contract;
 
 import com.booking.doctor_avalibality.shared.dtos.DoctorDTO;
-import com.booking.doctor_avalibality.shared.dtos.ReserveSlotDTO;
 import com.booking.doctor_avalibality.shared.dtos.SlotDTO;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface IDoctorAvailability {
-    List<SlotDTO> getFreeSlots(boolean state);
+    List<SlotDTO> getFreeSlots();
     DoctorDTO getFreeSlotsByDoctorName(String doctorName);
-//    void reserveSlot(ReserveSlotDTO request);
+    void reserveSlot(UUID slotId);
 }

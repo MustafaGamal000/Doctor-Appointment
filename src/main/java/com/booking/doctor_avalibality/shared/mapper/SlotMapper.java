@@ -10,7 +10,6 @@ public class SlotMapper {
         dto.setSlotId(entity.getSlotId());
         dto.setTime(entity.getTime());
         dto.setReserved(entity.isReserved());
-        dto.setReservedAt(entity.getReservedAt());
         dto.setCost(entity.getCost());
 
         if (entity.getDoctor() != null) {
@@ -24,7 +23,6 @@ public class SlotMapper {
         entity.setSlotId(dto.getSlotId());
         entity.setTime(dto.getTime());
         entity.setReserved(dto.isReserved());
-        entity.setReservedAt(dto.getReservedAt());
         entity.setCost(dto.getCost());
 
         if (dto.getDoctorId() != null) {
