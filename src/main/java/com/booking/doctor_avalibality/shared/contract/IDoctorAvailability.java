@@ -9,5 +9,5 @@ import java.util.List;
 public interface IDoctorAvailability {
     List<SlotDTO> getFreeSlots(boolean state);
     DoctorDTO getFreeSlotsByDoctorName(String doctorName);
-    void reserveSlot(ReserveSlotDTO request);
+//    void reserveSlot(ReserveSlotDTO request);
 }

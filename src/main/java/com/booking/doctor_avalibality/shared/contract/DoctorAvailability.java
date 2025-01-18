@@ -50,20 +50,20 @@ public class DoctorAvailability implements IDoctorAvailability {
                 .orElseThrow(() -> new IllegalArgumentException("Doctor with name " + doctorName + " not found."));
     }
 
-    @Override
-    public void reserveSlot(ReserveSlotDTO request) {
-        UUID slotId = request.getSlotId();
-
-        SlotEntity slot = slotRepository.findById(slotId)
-                .orElseThrow(() -> new IllegalArgumentException("Slot with ID " + slotId + " not found."));
-
-        if (slot.isReserved()) {
-            throw new IllegalArgumentException("Slot is already reserved.");
-        }
-
-        slot.setReserved(true);
-        slot.setReservedAt(LocalDateTime.now());
-
-        slotRepository.save(slot);
-    }
+//    @Override
+//    public void reserveSlot(ReserveSlotDTO request) {
+//        UUID slotId = request.getSlotId();
+//
+//        SlotEntity slot = slotRepository.findById(slotId)
+//                .orElseThrow(() -> new IllegalArgumentException("Slot with ID " + slotId + " not found."));
+//
+//        if (slot.isReserved()) {
+//            throw new IllegalArgumentException("Slot is already reserved.");
+//        }
+//
+//        slot.setReserved(true);
+//        slot.setReservedAt(LocalDateTime.now());
+//
+//        slotRepository.save(slot);
+//    }
 }
