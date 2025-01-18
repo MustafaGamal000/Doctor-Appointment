@@ -14,9 +14,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleDoctorNotFoundException(DoctorNotFoundException ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(),
                 HttpStatus.NOT_FOUND.value()
-                );
+        );
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
+
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ErrorResponse> handleIllegalArgumentException(Exception ex, WebRequest request) {
         ErrorResponse errorResponse = new ErrorResponse(
