@@ -1,7 +1,10 @@
 package com.booking.doctor_avalibality.shared.contract;
 
+import com.booking.doctor_avalibality.internal.repository.DoctorRepository;
+import com.booking.doctor_avalibality.shared.dtos.DoctorDTO;
 import com.booking.doctor_avalibality.shared.dtos.ReserveSlotDTO;
 import com.booking.doctor_avalibality.internal.entities.SlotEntity;
+import com.booking.doctor_avalibality.shared.mapper.DoctorMapper;
 import com.booking.doctor_avalibality.shared.mapper.SlotMapper;
 import com.booking.doctor_avalibality.internal.repository.SlotRepository;
 import com.booking.doctor_avalibality.shared.dtos.SlotDTO;
@@ -15,9 +18,11 @@ import java.util.stream.Collectors;
 @Service
 public class DoctorAvailability implements IDoctorAvailability {
     private final SlotRepository slotRepository;
+    private final DoctorRepository doctorRepository;
 
-    public DoctorAvailability(SlotRepository slotRepository) {
+    public DoctorAvailability(SlotRepository slotRepository, DoctorRepository doctorRepository) {
         this.slotRepository = slotRepository;
+        this.doctorRepository = doctorRepository;
     }
 
     @Override
@@ -26,6 +31,23 @@ public class DoctorAvailability implements IDoctorAvailability {
                 .stream()
                 .map(SlotMapper::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public DoctorDTO getFreeSlotsByDoctorName(String doctorName) {
+        return doctorRepository.findByDoctorName(doctorName)
+                .map(doctorEntity -> {
+                    DoctorDTO doctorDTO = DoctorMapper.toDTO(doctorEntity);
+
+                    List<SlotDTO> freeSlots = doctorDTO.getSlots().stream()
+                            .filter(slot -> !slot.isReserved())
+                            .collect(Collectors.toList());
+
+                    doctorDTO.setSlots(freeSlots);
+
+                    return doctorDTO;
+                })
+                .orElseThrow(() -> new IllegalArgumentException("Doctor with name " + doctorName + " not found."));
     }
 
     @Override

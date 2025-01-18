@@ -52,6 +52,8 @@ public class SlotService {
                 request.getCost());
     }
 
+
+    // For Testing Only, it is implemented in DoctorAvailability in shared package
     public void reserveSlot(ReserveSlotDTO request) {
         UUID slotId = request.getSlotId();
 

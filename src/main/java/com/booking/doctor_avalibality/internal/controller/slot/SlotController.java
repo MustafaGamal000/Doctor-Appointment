@@ -20,16 +20,18 @@ public class SlotController {
         this.slotService = slotService;
     }
 
-    @GetMapping("/{status}")
-    public List<SlotDTO> findReservedSlots(@PathVariable boolean status) {
-        return slotService.getReservedSlots(status);
-    }
-
     @PostMapping
     public ResponseEntity<SlotResponse> addSlot(@RequestBody SlotRequest slot) {
         return ResponseEntity.status(HttpStatus.CREATED).body(slotService.addSlot(slot));
     }
 
+    // Testing Only
+    @GetMapping("/{status}")
+    public List<SlotDTO> findReservedSlots(@PathVariable boolean status) {
+        return slotService.getReservedSlots(status);
+    }
+
+    // Testing Only
     @PostMapping("/reserve")
     public ResponseEntity<String> reserveSlot(@RequestBody ReserveSlotDTO request) {
         slotService.reserveSlot(request);

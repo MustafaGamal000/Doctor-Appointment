@@ -15,7 +15,7 @@ public class DoctorController {
     }
 
     @GetMapping("/{name}")
-    public DoctorDTO getSlots(@PathVariable String name) {
+    public DoctorDTO getAllSlots(@PathVariable String name) {
         return doctorService.getSlotsByDoctorName(name);
     }
 
