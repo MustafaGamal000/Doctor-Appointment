@@ -1,11 +1,10 @@
-package com.booking.doctor_avalibality.shared.contract;
+package com.booking.doctor_avalibality.internal.repository;
 
-import com.booking.doctor_avalibality.internal.repository.DoctorRepository;
-import com.booking.doctor_avalibality.shared.dtos.DoctorDTO;
 import com.booking.doctor_avalibality.internal.entities.SlotEntity;
-import com.booking.doctor_avalibality.shared.mapper.DoctorMapper;
-import com.booking.doctor_avalibality.shared.mapper.SlotMapper;
-import com.booking.doctor_avalibality.internal.repository.SlotRepository;
+import com.booking.doctor_avalibality.shared.contract.IDoctorAvailability;
+import com.booking.doctor_avalibality.shared.dtos.DoctorDTO;
+import com.booking.doctor_avalibality.internal.mapper.DoctorMapper;
+import com.booking.doctor_avalibality.internal.mapper.SlotMapper;
 import com.booking.doctor_avalibality.shared.dtos.SlotDTO;
 import org.springframework.stereotype.Service;
 
@@ -51,7 +50,7 @@ public class DoctorAvailability implements IDoctorAvailability {
     }
 
     @Override
-    public void reserveSlot(UUID slotId) {
+    public UUID reserveSlot(UUID slotId) {
 
         SlotEntity slot = slotRepository.findById(slotId)
                 .orElseThrow(() -> new IllegalArgumentException("Slot with ID " + slotId + " not found."));
@@ -64,5 +63,13 @@ public class DoctorAvailability implements IDoctorAvailability {
         slot.setReservedAt(LocalDateTime.now());
 
         slotRepository.save(slot);
+        return slot.getDoctor().getDoctorId();
+    }
+
+    @Override
+    public DoctorDTO findDoctorById(UUID doctorId) {
+        return doctorRepository.findByDoctorId(doctorId)
+                .map(DoctorMapper::toDTO)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid Doctor ID..!"));
     }
 }

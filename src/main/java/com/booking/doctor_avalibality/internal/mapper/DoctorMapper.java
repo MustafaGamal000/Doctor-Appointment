@@ -1,4 +1,4 @@
-package com.booking.doctor_avalibality.shared.mapper;
+package com.booking.doctor_avalibality.internal.mapper;
 
 import com.booking.doctor_avalibality.shared.dtos.DoctorDTO;
 import com.booking.doctor_avalibality.internal.entities.DoctorEntity;
@@ -10,7 +10,7 @@ public class DoctorMapper {
         DoctorDTO dto = new DoctorDTO();
         dto.setDoctorId(entity.getDoctorId());
         dto.setDoctorName(entity.getDoctorName());
-        // Map slots if needed (assuming SlotMapper is available)
+
         if (entity.getSlots() != null) {
             dto.setSlots(entity.getSlots().stream()
                     .map(SlotMapper::toDTO)

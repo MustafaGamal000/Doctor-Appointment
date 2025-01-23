@@ -9,5 +9,6 @@ import java.util.UUID;
 public interface IDoctorAvailability {
     List<SlotDTO> getFreeSlots();
     DoctorDTO getFreeSlotsByDoctorName(String doctorName);
-    void reserveSlot(UUID slotId);
+    UUID reserveSlot(UUID slotId);
+    DoctorDTO findDoctorById(UUID doctorId);
 }

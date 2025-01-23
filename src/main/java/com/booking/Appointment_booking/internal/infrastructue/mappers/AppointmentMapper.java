@@ -2,6 +2,7 @@ package com.booking.Appointment_booking.internal.infrastructue.mappers;
 
 import com.booking.Appointment_booking.internal.domain.models.Appointment;
 import com.booking.Appointment_booking.internal.infrastructue.entities.AppointmentEntity;
+import com.booking.Appointment_booking.shared.dto.AppointmentDTO;
 
 public class AppointmentMapper {
     public static Appointment toDomain(AppointmentEntity entity) {
@@ -10,8 +11,8 @@ public class AppointmentMapper {
         appointment.setReservedAt(entity.getReservedAt());
         appointment.setStatus(entity.getStatus());
         appointment.setSlotId(entity.getSlotId());
+        appointment.setDoctorId(entity.getDoctorId());
 
-        // Map patient if needed (assuming PatientMapper is available)
         if (entity.getPatient() != null) {
             appointment.setPatient(PatientMapper.toDomain(entity.getPatient()));
         }
@@ -24,11 +25,25 @@ public class AppointmentMapper {
         entity.setReservedAt(appointment.getReservedAt());
         entity.setStatus(appointment.getStatus());
         entity.setSlotId(appointment.getSlotId());
+        entity.setDoctorId(appointment.getDoctorId());
 
-        // Map patient if needed (assuming PatientMapper is available)
         if (appointment.getPatient() != null) {
             entity.setPatient(PatientMapper.toEntity(appointment.getPatient()));
         }
         return entity;
     }
+    public static AppointmentDTO toDTO(AppointmentEntity entity) {
+        AppointmentDTO dto = new AppointmentDTO();
+        dto.setAppointmentId(entity.getAppointmentId());
+        dto.setReservedAt(entity.getReservedAt());
+        dto.setStatus(entity.getStatus());
+        dto.setSlotId(entity.getSlotId());
+        dto.setDoctorId(entity.getDoctorId());
+
+        if (entity.getPatient() != null) {
+            dto.setPatient(PatientMapper.toDTO(entity.getPatient()));
+        }
+        return dto;
+    }
+
 }

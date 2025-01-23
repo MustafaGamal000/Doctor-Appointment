@@ -6,6 +6,10 @@ import com.booking.Appointment_booking.internal.infrastructue.events.Appointment
 import com.booking.Appointment_booking.internal.infrastructue.mappers.AppointmentMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
 @Repository
 public class AppointmentRepositoryImpl implements AppointmentRepository {
     private final JpaAppointmentRepository repository;
@@ -20,5 +24,12 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
     public void save(Appointment appointment) {
 
         repository.save(AppointmentMapper.toEntity(appointment));
+    }
+
+    @Override
+    public List<Appointment> findByDoctorId(UUID doctorId) {
+        return repository.findByDoctorId(doctorId).stream()
+                .map(AppointmentMapper::toDomain)
+                .collect(Collectors.toList());
     }
 }

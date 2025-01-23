@@ -1,4 +1,4 @@
-package com.booking.Appointment_booking.shared;
+package com.booking.Appointment_booking.shared.event;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

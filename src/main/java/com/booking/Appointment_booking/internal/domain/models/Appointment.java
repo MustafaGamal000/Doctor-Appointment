@@ -1,7 +1,7 @@
 package com.booking.Appointment_booking.internal.domain.models;
 
 
-import com.booking.Appointment_booking.shared.AppointmentStatus;
+import com.booking.Appointment_booking.internal.shared.AppointmentStatus;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -13,6 +13,7 @@ public class Appointment {
     private AppointmentStatus status;
     private Patient patient;
     private UUID slotId;
+    private UUID doctorId;
 
 
     public AppointmentStatus getStatus() {
@@ -53,5 +54,13 @@ public class Appointment {
 
     public void setSlotId(UUID slotId) {
         this.slotId = slotId;
+    }
+
+    public UUID getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(UUID doctorId) {
+        this.doctorId = doctorId;
     }
 }

@@ -7,8 +7,8 @@ import com.booking.Appointment_booking.internal.domain.contract.AppointmentRepos
 import com.booking.Appointment_booking.internal.domain.contract.PatientRepository;
 import com.booking.Appointment_booking.internal.domain.models.Appointment;
 import com.booking.Appointment_booking.internal.domain.models.Patient;
-import com.booking.Appointment_booking.shared.AppointmentEvent;
-import com.booking.Appointment_booking.shared.AppointmentStatus;
+import com.booking.Appointment_booking.shared.event.AppointmentEvent;
+import com.booking.Appointment_booking.internal.shared.AppointmentStatus;
 import com.booking.doctor_avalibality.shared.contract.IDoctorAvailability;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,6 @@ public class ReserveSlotUseCase {
     private final IDoctorAvailability doctorAvailability;
     private final AppointmentRepository appointmentRepository;
     private final PatientRepository patientRepository;
-
     private final IAppointmentEventPublisher appointmentEventPublisher;
 
     public ReserveSlotUseCase(IDoctorAvailability doctorAvailability, AppointmentRepository appointmentRepository, PatientRepository patientRepository, IAppointmentEventPublisher appointmentEventPublisher) {
@@ -28,12 +27,11 @@ public class ReserveSlotUseCase {
         this.appointmentRepository = appointmentRepository;
         this.patientRepository = patientRepository;
         this.appointmentEventPublisher = appointmentEventPublisher;
-
     }
 
     public BookAppointmentResponse reserveSlot(BookAppointmentRequest request) {
         UUID slotId = request.getSlotId();
-        doctorAvailability.reserveSlot(slotId);
+        UUID doctorId = doctorAvailability.reserveSlot(slotId);
 
         UUID patientId = request.getPatientId();
         Patient patient = patientRepository.findById(patientId)

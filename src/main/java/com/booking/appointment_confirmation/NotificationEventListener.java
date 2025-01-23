@@ -1,6 +1,6 @@
 package com.booking.appointment_confirmation;
 
-import com.booking.Appointment_booking.shared.AppointmentEvent;
+import com.booking.Appointment_booking.shared.event.AppointmentEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,6 @@
 package com.booking.Appointment_booking.internal.infrastructue.listeners;
 
-import com.booking.Appointment_booking.shared.AppointmentEvent;
+import com.booking.Appointment_booking.shared.event.AppointmentEvent;
 import org.springframework.context.event.EventListener;
 
 public class AppointmentCreatedListener {

@@ -1,6 +1,6 @@
 package com.booking.Appointment_booking.internal.infrastructue.events;
 
-import com.booking.Appointment_booking.shared.AppointmentEvent;
+import com.booking.Appointment_booking.shared.event.AppointmentEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;

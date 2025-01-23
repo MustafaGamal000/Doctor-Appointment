@@ -1,36 +1,20 @@
-package com.booking.Appointment_booking.internal.infrastructue.entities;
+package com.booking.Appointment_booking.shared.dto;
+
 
 import com.booking.Appointment_booking.internal.shared.AppointmentStatus;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity
-@Table(name = "Appointments")
-public class AppointmentEntity {
+public class AppointmentDTO {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "AppointmentId")
     private UUID appointmentId;
-
-    @Column(name = "slot_id", nullable = false)
+    private LocalDateTime reservedAt;
+    private AppointmentStatus status;
+    private PatientDTO patient;
     private UUID slotId;
-
-    @Column(name = "doctor_id", nullable = false)
     private UUID doctorId;
 
-    @ManyToOne
-    @JoinColumn(name = "patient_id", referencedColumnName = "PatientId")
-    @JsonManagedReference
-    private PatientEntity patient;
-
-    private LocalDateTime reservedAt;
-
-    @Enumerated(EnumType.STRING)
-    private AppointmentStatus status;
 
     public AppointmentStatus getStatus() {
         return status;
@@ -48,11 +32,11 @@ public class AppointmentEntity {
         this.appointmentId = appointmentId;
     }
 
-    public PatientEntity getPatient() {
+    public PatientDTO getPatient() {
         return patient;
     }
 
-    public void setPatient(PatientEntity patient) {
+    public void setPatient(PatientDTO patient) {
         this.patient = patient;
     }
 
