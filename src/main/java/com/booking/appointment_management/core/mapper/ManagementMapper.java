@@ -1,4 +1,4 @@
-package com.booking.appointment_management.core;
+package com.booking.appointment_management.core.mapper;
 
 import com.booking.appointment_management.core.domain.Appointment;
 import com.booking.appointment_management.core.domain.Doctor;

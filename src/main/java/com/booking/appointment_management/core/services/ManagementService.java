@@ -1,10 +1,11 @@
 package com.booking.appointment_management.core.services;
 
-import com.booking.appointment_management.core.ManagementMapper;
+import com.booking.appointment_management.core.mapper.ManagementMapper;
 import com.booking.appointment_management.core.domain.Appointment;
 import com.booking.appointment_management.core.domain.Doctor;
 import com.booking.appointment_management.core.port.IAppointmentRepository;
 import com.booking.appointment_management.core.port.IDoctorRepository;
+import com.booking.Appointment_booking.internal.shared.AppointmentStatus;
 import com.booking.appointment_management.shared.ManagementDoctorDTO;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +37,15 @@ public class ManagementService {
         ManagementDoctorDTO doctorDTO = ManagementMapper.toManagementDoctorDTO(doctor, appointmentsBySlot);
 
         return Collections.singletonList(doctorDTO);
+    }
+
+    public String changeCurrentStatus(UUID appointmentId, AppointmentStatus status){
+        int updatedRows = appointmentRepository.updateStatusById(appointmentId, status);
+
+        if (updatedRows == 0) {
+            throw new IllegalArgumentException("Appointment not found");
+        }
+
+        return "Appointment status updated successfully to " + status;
     }
 }
