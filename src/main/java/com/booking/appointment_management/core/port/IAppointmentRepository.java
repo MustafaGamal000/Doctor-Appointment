@@ -9,6 +9,4 @@ import java.util.UUID;
 public interface IAppointmentRepository {
     List<Appointment> findAppointmentByDoctorId(UUID doctorId);
     int updateStatusById(UUID appointmentId, AppointmentStatus status);
-
-
 }

@@ -4,10 +4,10 @@ import com.booking.appointment_management.core.domain.Appointment;
 import com.booking.appointment_management.core.domain.Doctor;
 import com.booking.appointment_management.core.domain.Patient;
 import com.booking.appointment_management.core.domain.Slot;
-import com.booking.appointment_management.shared.ManagementAppointmentDTO;
-import com.booking.appointment_management.shared.ManagementDoctorDTO;
-import com.booking.appointment_management.shared.ManagementPatientDTO;
-import com.booking.appointment_management.shared.ManagementSlotDTO;
+import com.booking.appointment_management.shell.dtos.ManagementAppointmentDTO;
+import com.booking.appointment_management.shell.dtos.ManagementDoctorDTO;
+import com.booking.appointment_management.shell.dtos.ManagementPatientDTO;
+import com.booking.appointment_management.shell.dtos.ManagementSlotDTO;
 
 import java.util.List;
 import java.util.Map;

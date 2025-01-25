@@ -1,4 +1,4 @@
-package com.booking.appointment_management.shared;
+package com.booking.appointment_management.shell.dtos;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

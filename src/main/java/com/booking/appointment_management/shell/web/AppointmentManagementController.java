@@ -1,8 +1,8 @@
 package com.booking.appointment_management.shell.web;
 
 import com.booking.Appointment_booking.shared.AppointmentStatus;
-import com.booking.appointment_management.core.domain.Appointment;
 import com.booking.appointment_management.core.services.ManagementService;
+import com.booking.appointment_management.shell.dtos.ManagementDoctorDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +20,7 @@ public class AppointmentManagementController {
     }
 
     @GetMapping("/upcoming-appointments/{doctorId}")
-    public List<Appointment> getUpcomingAppointments(@PathVariable UUID doctorId) {
+    public List<ManagementDoctorDTO> getUpcomingAppointments(@PathVariable UUID doctorId) {
         return managementService.getUpcomingAppointment(doctorId);
     }
 

@@ -1,4 +1,4 @@
-package com.booking.appointment_management.shared;
+package com.booking.appointment_management.shell.dtos;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
