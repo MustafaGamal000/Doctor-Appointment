@@ -21,7 +21,12 @@ public class SlotController {
 
     @PostMapping
     public ResponseEntity<SlotResponse> addSlot(@RequestBody SlotRequest slot) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(slotService.addSlot(slot));
+        slotService.addSlot(slot);
+        SlotResponse response = SlotResponse.createSlotResponse("New slot added to doctor name: " + slot.getDoctorName(),
+                "Slot Created",
+                slot.getCost()
+        );
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     // Testing Only

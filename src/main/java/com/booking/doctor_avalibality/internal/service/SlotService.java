@@ -3,7 +3,6 @@ package com.booking.doctor_avalibality.internal.service;
 import com.booking.doctor_avalibality.shared.dtos.SlotDTO;
 import com.booking.doctor_avalibality.internal.mapper.SlotMapper;
 import com.booking.doctor_avalibality.internal.controller.slot.request.SlotRequest;
-import com.booking.doctor_avalibality.internal.controller.slot.response.SlotResponse;
 import com.booking.doctor_avalibality.internal.entities.DoctorEntity;
 import com.booking.doctor_avalibality.internal.repository.DoctorRepository;
 import com.booking.doctor_avalibality.internal.repository.SlotRepository;
@@ -29,7 +28,7 @@ public class SlotService {
                 .collect(Collectors.toList());
     }
 
-    public SlotResponse addSlot(SlotRequest request) {
+    public void addSlot(SlotRequest request) {
         DoctorEntity doctor = doctorRepository.findByDoctorName(request.getDoctorName())
                 .orElseGet(() -> {
                     DoctorEntity newDoctor = new DoctorEntity();
@@ -44,9 +43,6 @@ public class SlotService {
         slotDTO.setReserved(false);
 
         slotRepository.save(SlotMapper.toEntity(slotDTO));
-        return SlotResponse.createSlotResponse("New slot added to doctor name: " + request.getDoctorName(),
-                "Slot Created",
-                request.getCost());
     }
 
 
