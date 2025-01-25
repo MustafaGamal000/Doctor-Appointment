@@ -1,6 +1,8 @@
 package com.booking.Appointment_booking.internal.infrastructue.events;
 
-import com.booking.Appointment_booking.shared.event.AppointmentEvent;
+import com.booking.Appointment_booking.internal.domain.events.IAppointmentEventPublisher;
+import com.booking.Appointment_booking.internal.domain.models.Appointment;
+import com.booking.Appointment_booking.shared.event.AppointmentCreatedEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
@@ -12,12 +14,16 @@ public class AppointmentEventPublisher implements IAppointmentEventPublisher {
     private ApplicationEventPublisher applicationEventPublisher;
 
     @Override
-    public void publishCustomEvent(AppointmentEvent event) {
+    public void publishAppointmentCreatedEvent(Appointment appointment) {
         System.out.println("Publishing custom event. ");
 
-        //TODO We need to create infrastructe event that take this event to publish it
-//        AppointmentEvent appointmentCreatedEvent = new AppointmentCreated();
-        applicationEventPublisher.publishEvent(event);
+        AppointmentCreatedEvent appointmentCreatedEvent = new AppointmentCreatedEvent(appointment.getAppointmentId(),
+                appointment.getSlotId(),
+                appointment.getPatient().getPatientId(),
+                appointment.getPatient().getPatientName(),
+                appointment.getReservedAt());
+
+        applicationEventPublisher.publishEvent(appointmentCreatedEvent);
     }
 
 }

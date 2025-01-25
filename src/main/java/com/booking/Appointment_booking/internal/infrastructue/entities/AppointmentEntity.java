@@ -1,6 +1,6 @@
 package com.booking.Appointment_booking.internal.infrastructue.entities;
 
-import com.booking.Appointment_booking.internal.shared.AppointmentStatus;
+import com.booking.Appointment_booking.shared.AppointmentStatus;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 

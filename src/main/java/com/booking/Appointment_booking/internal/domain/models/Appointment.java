@@ -1,7 +1,7 @@
 package com.booking.Appointment_booking.internal.domain.models;
 
 
-import com.booking.Appointment_booking.internal.shared.AppointmentStatus;
+import com.booking.Appointment_booking.shared.AppointmentStatus;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

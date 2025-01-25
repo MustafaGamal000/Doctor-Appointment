@@ -1,14 +1,13 @@
 package com.booking.Appointment_booking.internal.infrastructue.repositories;
 
 import com.booking.Appointment_booking.internal.infrastructue.entities.AppointmentEntity;
-import com.booking.Appointment_booking.internal.shared.AppointmentStatus;
+import com.booking.Appointment_booking.shared.AppointmentStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
