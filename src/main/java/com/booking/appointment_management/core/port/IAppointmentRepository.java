@@ -1,6 +1,6 @@
 package com.booking.appointment_management.core.port;
 
-import com.booking.Appointment_booking.internal.shared.AppointmentStatus;
+import com.booking.Appointment_booking.shared.AppointmentStatus;
 import com.booking.appointment_management.core.domain.Appointment;
 
 import java.util.List;
