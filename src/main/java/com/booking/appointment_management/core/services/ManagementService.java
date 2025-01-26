@@ -4,7 +4,6 @@ import com.booking.appointment_management.core.domain.Appointment;
 import com.booking.appointment_management.core.domain.Doctor;
 import com.booking.appointment_management.core.port.IAppointmentRepository;
 import com.booking.appointment_management.core.port.IDoctorRepository;
-
 import com.booking.shared.AppointmentStatus;
 import org.springframework.stereotype.Service;
 

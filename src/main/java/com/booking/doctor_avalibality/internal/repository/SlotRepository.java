@@ -1,6 +1,5 @@
 package com.booking.doctor_avalibality.internal.repository;
 
-import com.booking.doctor_avalibality.internal.entities.DoctorEntity;
 import com.booking.doctor_avalibality.internal.entities.SlotEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

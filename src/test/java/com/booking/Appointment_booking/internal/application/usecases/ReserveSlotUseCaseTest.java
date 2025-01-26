@@ -6,6 +6,7 @@ import com.booking.Appointment_booking.internal.domain.contract.PatientRepositor
 import com.booking.Appointment_booking.internal.domain.events.IAppointmentEventPublisher;
 import com.booking.Appointment_booking.internal.domain.models.Appointment;
 import com.booking.Appointment_booking.internal.domain.models.Patient;
+import com.booking.doctor_avalibality.shared.contract.IDoctorAvailability;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -27,7 +28,8 @@ class ReserveSlotUseCaseTest {
     private PatientRepository patientRepository;
     @Mock
     private IAppointmentEventPublisher appointmentEventPublisher;
-
+    @Mock
+    private IDoctorAvailability doctorAvailability;
     @InjectMocks
     private ReserveSlotUseCase reserveSlotUseCase;
 
@@ -39,6 +41,7 @@ class ReserveSlotUseCaseTest {
         bookAppointmentRequest.setPatientId(PATIENT_UUID);
         bookAppointmentRequest.setPatientName(PATIENT_NAME);
 
+        when(doctorAvailability.reserveSlot(SLOT_UUID)).thenReturn(DOCTOR_UUID);
         when(patientRepository.findById(PATIENT_UUID)).thenReturn(Optional.of(new Patient(PATIENT_UUID, PATIENT_NAME)));
 
         // Act
