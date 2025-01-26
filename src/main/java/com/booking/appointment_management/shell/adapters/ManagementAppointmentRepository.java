@@ -1,6 +1,6 @@
 package com.booking.appointment_management.shell.adapters;
 
-import com.booking.Appointment_booking.shared.AppointmentStatus;
+import com.booking.Appointment_booking.internal.shared.AppointmentStatus;
 import com.booking.appointment_management.core.domain.Appointment;
 import com.booking.appointment_management.core.port.IAppointmentRepository;
 import com.booking.Appointment_booking.shared.contract.IAppointmentBooking;

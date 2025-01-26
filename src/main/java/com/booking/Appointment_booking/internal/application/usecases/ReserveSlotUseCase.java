@@ -7,7 +7,7 @@ import com.booking.Appointment_booking.internal.domain.contract.AppointmentRepos
 import com.booking.Appointment_booking.internal.domain.contract.PatientRepository;
 import com.booking.Appointment_booking.internal.domain.models.Appointment;
 import com.booking.Appointment_booking.internal.domain.models.Patient;
-import com.booking.Appointment_booking.shared.AppointmentStatus;
+import com.booking.Appointment_booking.internal.shared.AppointmentStatus;
 import com.booking.doctor_avalibality.shared.contract.IDoctorAvailability;
 import org.springframework.stereotype.Service;
 

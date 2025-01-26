@@ -1,6 +1,5 @@
 package com.booking.appointment_management.core.domain;
 
-import com.booking.Appointment_booking.shared.AppointmentStatus;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -8,16 +7,16 @@ public class Appointment {
 
     private UUID appointmentId;
     private LocalDateTime reservedAt;
-    private AppointmentStatus status;
+    private String status;
     private Patient patient;
     private UUID slotId;
     private UUID doctorId;
 
-    public AppointmentStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(AppointmentStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

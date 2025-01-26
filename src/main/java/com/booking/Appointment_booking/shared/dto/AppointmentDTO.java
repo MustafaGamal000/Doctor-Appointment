@@ -1,7 +1,7 @@
 package com.booking.Appointment_booking.shared.dto;
 
 
-import com.booking.Appointment_booking.shared.AppointmentStatus;
+import com.booking.Appointment_booking.internal.shared.AppointmentStatus;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -10,17 +10,17 @@ public class AppointmentDTO {
 
     private UUID appointmentId;
     private LocalDateTime reservedAt;
-    private AppointmentStatus status;
+    private String status;
     private PatientDTO patient;
     private UUID slotId;
     private UUID doctorId;
 
 
-    public AppointmentStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(AppointmentStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

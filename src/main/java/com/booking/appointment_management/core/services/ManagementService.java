@@ -6,7 +6,7 @@ import com.booking.appointment_management.core.domain.Doctor;
 import com.booking.appointment_management.core.port.IAppointmentRepository;
 import com.booking.appointment_management.core.port.IDoctorRepository;
 import com.booking.appointment_management.shell.dtos.ManagementDoctorDTO;
-import com.booking.Appointment_booking.shared.AppointmentStatus;
+import com.booking.Appointment_booking.internal.shared.AppointmentStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -30,6 +30,7 @@ public class ManagementService {
         List<Appointment> appointments = appointmentRepository.findAppointmentByDoctorId(doctorId);
 
         Doctor doctor = doctorRepository.findDoctorById(doctorId);
+
 
         Map<UUID, List<Appointment>> appointmentsBySlot = appointments.stream()
                 .collect(Collectors.groupingBy(Appointment::getSlotId));

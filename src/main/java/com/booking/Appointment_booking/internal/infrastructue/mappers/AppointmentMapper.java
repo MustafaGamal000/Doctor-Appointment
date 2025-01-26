@@ -36,7 +36,7 @@ public class AppointmentMapper {
         AppointmentDTO dto = new AppointmentDTO();
         dto.setAppointmentId(entity.getAppointmentId());
         dto.setReservedAt(entity.getReservedAt());
-        dto.setStatus(entity.getStatus());
+        dto.setStatus(entity.getStatus().toString());
         dto.setSlotId(entity.getSlotId());
         dto.setDoctorId(entity.getDoctorId());
 
