@@ -1,5 +1,6 @@
 package com.booking.Appointment_booking.internal.domain.models;
 
+import java.util.Objects;
 import java.util.UUID;
 public class Patient {
     private UUID patientId;
@@ -27,5 +28,18 @@ public class Patient {
 
     public void setPatientName(String patientName) {
         this.patientName = patientName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Patient patient = (Patient) o;
+        return Objects.equals(patientId, patient.patientId) && Objects.equals(patientName, patient.patientName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(patientId, patientName);
     }
 }
