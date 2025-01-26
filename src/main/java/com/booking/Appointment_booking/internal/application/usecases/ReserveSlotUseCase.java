@@ -47,6 +47,7 @@ public class ReserveSlotUseCase {
         appointment.setStatus(AppointmentStatus.OPENED);
         appointment.setPatient(patient);
         appointment.setSlotId(slotId);
+        appointment.setDoctorId(doctorId);
 
         appointmentRepository.save(appointment);
 
@@ -55,6 +56,7 @@ public class ReserveSlotUseCase {
         // Return the response
         return new BookAppointmentResponse(
                 appointment.getAppointmentId(),
+                appointment.getDoctorId(),
                 slotId,
                 "Appointment booked successfully."
         );

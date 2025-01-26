@@ -10,6 +10,7 @@ public class NotificationEventListener {
     @EventListener
     public void sendNotification(AppointmentCreatedEvent event) {
         System.out.println("Sending confirmation notification for appointment ID: " + event.appointmentId());
+        System.out.println("Doctor ID: " + event.doctorId());
         System.out.println("Slot ID: " + event.slotId());
         System.out.println("Patient ID: " + event.patientId());
         System.out.println("Patient Name: " + event.patientName());

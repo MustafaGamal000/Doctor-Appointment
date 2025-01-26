@@ -18,6 +18,7 @@ public class AppointmentEventPublisher implements IAppointmentEventPublisher {
         System.out.println("Publishing custom event. ");
 
         AppointmentCreatedEvent appointmentCreatedEvent = new AppointmentCreatedEvent(appointment.getAppointmentId(),
+                appointment.getDoctorId(),
                 appointment.getSlotId(),
                 appointment.getPatient().getPatientId(),
                 appointment.getPatient().getPatientName(),
