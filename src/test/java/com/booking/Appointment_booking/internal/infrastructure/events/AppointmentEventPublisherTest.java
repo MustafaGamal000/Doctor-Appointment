@@ -11,10 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
 
-import java.time.LocalDateTime;
-
 import static com.booking.shared.TestConstants.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
@@ -33,9 +30,15 @@ class AppointmentEventPublisherTest {
         appointment.setPatient(new Patient(PATIENT_UUID, PATIENT_NAME));
         appointment.setSlotId(SLOT_UUID);
         appointment.setReservedAt(RESERVED_AT);
+        appointment.setDoctorId(DOCTOR_UUID);
 
-        AppointmentCreatedEvent expectedAppointmentCreatedEvent = new AppointmentCreatedEvent(APPOINTMENT_UUID, SLOT_UUID, PATIENT_UUID,
-                PATIENT_NAME, RESERVED_AT);
+        AppointmentCreatedEvent expectedAppointmentCreatedEvent = new AppointmentCreatedEvent(
+                APPOINTMENT_UUID,
+                DOCTOR_UUID,
+                SLOT_UUID,
+                PATIENT_UUID,
+                PATIENT_NAME,
+                RESERVED_AT);
         // Act
         appointmentEventPublisher.publishAppointmentCreatedEvent(appointment);
 
