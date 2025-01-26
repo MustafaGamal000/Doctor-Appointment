@@ -1,6 +1,7 @@
-package com.booking.Appointment_booking.internal.infrastructue.repositories;
+package com.booking.Appointment_booking.shared.contract;
 
 import com.booking.Appointment_booking.internal.infrastructue.mappers.AppointmentMapper;
+import com.booking.Appointment_booking.internal.infrastructue.repositories.JpaAppointmentRepository;
 import com.booking.shared.AppointmentStatus;
 import com.booking.Appointment_booking.shared.contract.IAppointmentBooking;
 import com.booking.Appointment_booking.shared.dto.AppointmentDTO;
