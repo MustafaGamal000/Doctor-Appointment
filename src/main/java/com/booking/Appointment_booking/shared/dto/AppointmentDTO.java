@@ -1,8 +1,6 @@
 package com.booking.Appointment_booking.shared.dto;
 
 
-import com.booking.Appointment_booking.internal.shared.AppointmentStatus;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 

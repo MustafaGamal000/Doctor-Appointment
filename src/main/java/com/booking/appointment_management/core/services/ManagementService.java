@@ -1,15 +1,13 @@
 package com.booking.appointment_management.core.services;
 
-import com.booking.appointment_management.shell.mappers.ManagementMapper;
 import com.booking.appointment_management.core.domain.Appointment;
 import com.booking.appointment_management.core.domain.Doctor;
 import com.booking.appointment_management.core.port.IAppointmentRepository;
 import com.booking.appointment_management.core.port.IDoctorRepository;
-import com.booking.appointment_management.shell.dtos.ManagementDoctorDTO;
-import com.booking.Appointment_booking.internal.shared.AppointmentStatus;
+
+import com.booking.shared.AppointmentStatus;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -26,7 +24,7 @@ public class ManagementService {
     }
 
 
-    public List<ManagementDoctorDTO> getUpcomingAppointment(UUID doctorId) {
+    public Map<Doctor, Map<UUID, List<Appointment>>> getUpcomingAppointment(UUID doctorId) {
         List<Appointment> appointments = appointmentRepository.findAppointmentByDoctorId(doctorId);
 
         Doctor doctor = doctorRepository.findDoctorById(doctorId);
@@ -35,9 +33,7 @@ public class ManagementService {
         Map<UUID, List<Appointment>> appointmentsBySlot = appointments.stream()
                 .collect(Collectors.groupingBy(Appointment::getSlotId));
 
-        ManagementDoctorDTO doctorDTO = ManagementMapper.toManagementDoctorDTO(doctor, appointmentsBySlot);
-
-        return Collections.singletonList(doctorDTO);
+        return Map.of(doctor, appointmentsBySlot);
     }
 
     public String changeCurrentStatus(UUID appointmentId, AppointmentStatus status){

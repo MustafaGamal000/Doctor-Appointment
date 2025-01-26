@@ -15,6 +15,12 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class ManagementMapper {
+    public static List<ManagementDoctorDTO> toManagementDoctorDTOs(Map<Doctor, Map<UUID, List<Appointment>>> doctorAppointmentsMap) {
+        return doctorAppointmentsMap.entrySet().stream()
+                .map(entry -> toManagementDoctorDTO(entry.getKey(), entry.getValue()))
+                .collect(Collectors.toList());
+    }
+
     public static ManagementDoctorDTO toManagementDoctorDTO(Doctor doctor, Map<UUID, List<Appointment>> appointmentsBySlot) {
         List<ManagementSlotDTO> slotDTOs = doctor.getSlots().stream()
                 .filter(slot -> appointmentsBySlot.containsKey(slot.getSlotId()))
